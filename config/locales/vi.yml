@@ -1,2 +1,52 @@
 vi:
+<<<<<<< HEAD
   title: "He Thong Dat Phong Lam Viec"
+=======
+  helpers:
+    label:
+      user:
+        name: "Tên"
+        email: "Email"
+        password: "Mật khẩu"
+        phone: "Số điện thoại"
+        password_confirmation: "Nhập lại mật khẩu"
+  activerecord:
+    errors:
+      messages:
+        blank: "không được để trống"
+        invalid: "không đúng định dạng"
+        too_short: "quá ngắn"
+        not_a_number: "không phải số"
+  title: "Hệ thống đặt phòng làm việc chung"
+  static_pages:
+    home:
+      content: "Trang chủ"
+    about:
+      title: "Về chúng tôi"
+      content: "Web này dùng để đặt phòng làm việc chung"
+    contact:
+      title: "Liên hệ"
+      content: "Liên hệ chúng tôi qua facebook và email ở dưới footer"
+  layouts:
+    header:
+      title_logo: "CoWorking Space"
+      signup: "Đăng ký"
+      login: "Đăng nhập"
+    footer:
+      title_about: "Về chúng tôi"
+      title_contact: "Liên hệ: "
+  shared:
+    error_messages:
+      content_error: "Biểu mẫu này có %{error} lỗi"
+  users:
+    user_notexist: "Tài khoản không tồn tại"
+    create_success: "Chào mừng đến với ứng dụng"
+    create_fail: "Đăng ký thất bại"
+    update_success: "Cập nhật thành công"
+    new:
+      title: "Đăng ký"
+      btn_create: "Đăng ký tài khoản"
+    edit:
+      title: "Chỉnh sửa thông tin"
+      btn_edit: "Lưu thay đổi"
+>>>>>>> 2098788... View_Edit_Profile

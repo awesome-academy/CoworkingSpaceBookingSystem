@@ -1,2 +1,37 @@
 en:
   title: "Coworking Space Booking System"
+<<<<<<< HEAD
+=======
+  static_pages:
+    home:
+      content: "Home page"
+    about:
+      title: "About"
+      content: "This web use to booking place to work together"
+    contact:
+      title: "Contact"
+      content: "Contact us with email and facebook bellow footer"
+  layouts:
+    header:
+      english: "English"
+      title_logo: "CoWorking Space"
+      signup: "Sign up"
+      login: "Login"
+    footer:
+      title_about: "About"
+      title_contact: "Contact: "
+  shared:
+    error_messages:
+      content_error: "The form contains %{error} error"
+  users:
+    user_notexist: "User does not exist"
+    create_success: Welcome to the App!"
+    create_fail: "Sign up failed"
+    update_success: "Update success"
+    new:
+      title: "Signup"
+      btn_create: "Create my account"
+    edit:
+      title: "Edit Profile"
+      btn_edit: "Save changes"
+>>>>>>> 2098788... View_Edit_Profile
