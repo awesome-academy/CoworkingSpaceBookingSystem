@@ -6,7 +6,7 @@ ruby "2.6.5"
 gem "bcrypt"
 gem "figaro"
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap-sass", "3.3.7"
+gem "bootstrap-sass", "3.4.1"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "font-awesome-rails"
