@@ -6,4 +6,5 @@ phone_max: 11
 email_max: 255
 password_min: 6
 remember_me: "1"
+google_maps_api_key: AIzaSyCFOI6IXI1KEcs7hXeHlOasMIeKWLnRnf8
 password_expired: 2

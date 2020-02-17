@@ -17,6 +17,7 @@ $alert-background-color: mediumseagreen;
 $users-border: gray-lighter;
 $navbar-nav: #f7f6f6;
 $navbar-menu: black;
+$fa: orange;
 .center.jumbotron {
     text-align: center;
 }
@@ -176,13 +177,8 @@ header.navbar-menu {
     background-color: $navbar-menu;
 }
 .fa{
-  color: orange;
+  color: $fa;
 }
-
-
-///////////////////////////////////////
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
 
 /* mixins, variables, etc. */
 
@@ -363,4 +359,3 @@ input {
     color: $state-danger-text;
   }
 }
-///////////////////////////////////////

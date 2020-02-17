@@ -1,0 +1,26 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"><%= t ".id" %></th>
+      <th scope="col"><%= t ".name" %></th>
+      <th scope="col"><%= t ".street" %></th>
+      <th scope="col"><%= t ".city" %></th>
+      <th scope="col"><%= t ".amenities" %></th>
+      <th scope="col"><%= t ".status" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= @venue.id %></th>
+      <td><%= link_to @venue.name %></td>
+      <td><%= @venue.address.name %></td>
+      <td><%= @venue.address.city %></td>
+      <td>
+        <%= @venue.amenities.each do |v| %>
+        <%= v.name %>
+      <% end %>
+      </td>
+      <td><%= @venue.status %></td>
+    </tr>
+  </tbody>
+</table>

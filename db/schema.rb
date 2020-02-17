@@ -10,22 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_05_005218) do
+ActiveRecord::Schema.define(version: 2020_02_16_123218) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.string "city"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "venue_id"
+    t.index ["venue_id"], name: "index_addresses_on_venue_id"
   end
 
   create_table "amenities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "venues_id"
-    t.index ["venues_id"], name: "index_amenities_on_venues_id"
+    t.bigint "venue_id"
+    t.index ["venue_id"], name: "index_amenities_on_venue_id"
   end
 
   create_table "booking_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -34,20 +37,20 @@ ActiveRecord::Schema.define(version: 2020_02_05_005218) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "spaces_id"
-    t.bigint "users_id"
-    t.bigint "payments_id"
-    t.index ["payments_id"], name: "index_booking_details_on_payments_id"
-    t.index ["spaces_id"], name: "index_booking_details_on_spaces_id"
-    t.index ["users_id"], name: "index_booking_details_on_users_id"
+    t.bigint "space_id"
+    t.bigint "user_id"
+    t.bigint "payment_id"
+    t.index ["payment_id"], name: "index_booking_details_on_payment_id"
+    t.index ["space_id"], name: "index_booking_details_on_space_id"
+    t.index ["user_id"], name: "index_booking_details_on_user_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_messages_on_users_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +58,16 @@ ActiveRecord::Schema.define(version: 2020_02_05_005218) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "per_month", precision: 10
+    t.decimal "per_day", precision: 10
+    t.decimal "per_hour", precision: 10
+    t.bigint "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_prices_on_space_id"
   end
 
   create_table "space_prices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,18 +90,18 @@ ActiveRecord::Schema.define(version: 2020_02_05_005218) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "venues_id"
+    t.bigint "venue_id"
     t.bigint "manager_id"
-    t.bigint "types_id"
+    t.bigint "type_id"
     t.bigint "space_prices_id"
     t.index ["manager_id"], name: "index_spaces_on_manager_id"
     t.index ["space_prices_id"], name: "index_spaces_on_space_prices_id"
-    t.index ["types_id"], name: "index_spaces_on_types_id"
-    t.index ["venues_id"], name: "index_spaces_on_venues_id"
+    t.index ["type_id"], name: "index_spaces_on_type_id"
+    t.index ["venue_id"], name: "index_spaces_on_venue_id"
   end
 
   create_table "types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type_name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -112,30 +125,30 @@ ActiveRecord::Schema.define(version: 2020_02_05_005218) do
     t.datetime "reset_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_roles_id"
-    t.index ["user_roles_id"], name: "index_users_on_user_roles_id"
+    t.bigint "user_role_id"
+    t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
   create_table "venues", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.boolean "status"
+    t.string "name"
+    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "belongs_to_user_id"
-    t.bigint "addresses_id"
-    t.index ["addresses_id"], name: "index_venues_on_addresses_id"
-    t.index ["belongs_to_user_id"], name: "index_venues_on_belongs_to_user_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
-  add_foreign_key "amenities", "venues", column: "venues_id"
-  add_foreign_key "booking_details", "payments", column: "payments_id"
-  add_foreign_key "booking_details", "spaces", column: "spaces_id"
-  add_foreign_key "booking_details", "users", column: "users_id"
-  add_foreign_key "messages", "users", column: "users_id"
+  add_foreign_key "addresses", "venues"
+  add_foreign_key "amenities", "venues"
+  add_foreign_key "booking_details", "payments"
+  add_foreign_key "booking_details", "spaces"
+  add_foreign_key "booking_details", "users"
+  add_foreign_key "messages", "users"
+  add_foreign_key "prices", "spaces"
   add_foreign_key "spaces", "space_prices", column: "space_prices_id"
-  add_foreign_key "spaces", "types", column: "types_id"
+  add_foreign_key "spaces", "types"
   add_foreign_key "spaces", "users", column: "manager_id"
-  add_foreign_key "spaces", "venues", column: "venues_id"
-  add_foreign_key "users", "user_roles", column: "user_roles_id"
-  add_foreign_key "venues", "addresses", column: "addresses_id"
-  add_foreign_key "venues", "users", column: "belongs_to_user_id"
+  add_foreign_key "spaces", "venues"
+  add_foreign_key "users", "user_roles"
+  add_foreign_key "venues", "users"
 end

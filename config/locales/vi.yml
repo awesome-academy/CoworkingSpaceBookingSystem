@@ -63,7 +63,6 @@ vi:
       new_user: "Thành viên mới?"
       sign_up: "Đăng ký ngay"
       remember_me: "Ghi nhớ"
-      forgot_password: "Quên mật khẩu"
   account_activations:
     account_activated: "Kích hoạt tài khoản thành công"
     invalid_activation: "Kích hoạt không thành công"
@@ -72,7 +71,7 @@ vi:
     subject_reset: "Đặt lại mạt khẩu"
     account_activation:
       subject: "Kích hoạt tài khoản"
-      hi_user: "chào bạn %{user}"
+      hi_user: "Chào bạn %{user}"
       content: "CHào mừng đến với hệ thống đặt phòng làm việc chung, kích vào link bên dưới để kích hoạt tài khoản"
       activated: "kích hoạt"
       reset_password: "Cập nhật lại mật khẩu"
@@ -98,3 +97,21 @@ vi:
     new:
       title: "Quên mật khẩu"
       btn_submit: "Gửi"
+  venues:
+    update_venue_success: "Cập nhật Venue thành công"
+    venue_notexist: "Venue không tồn tại"
+    form:
+      name: "Tên"
+      address: "ĐỊA CHỈ:"
+      amenities: "THIẾT BỊ:"
+      street: "Tên đường:"
+      city: "Thành phố:"
+      amenity: "Thiết bị:"
+    new:
+      title: "Tạo mới Venue"
+      btn_create_venue: "Tạo mới"
+    edit:
+      title: "Chỉnh sửa Venue"
+      btn_edit_venue: "Chỉnh sửa"
+    index:
+      all_spaces: "Spaces của bạn"

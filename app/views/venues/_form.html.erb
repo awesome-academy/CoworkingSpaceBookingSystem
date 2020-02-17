@@ -1,0 +1,35 @@
+<%= form_for(@venue) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="row">
+    <div class="col-md-12 col-md-offset">
+        <div class="col-md-12">
+          <%= f.label :name, t(".name") %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="field col-md-12">
+          <%= f.label :title, t(".amenities") %>
+        </div>
+      <div class="col-md-12">
+        <%= f.fields_for :amenities do |ff| %>
+          <%= render "amenity_fields", f: ff %>
+        <% end %>
+      <%= link_to_add_association t(".add_amenity"), f, :amenities, class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-12">
+        <%= f.label :title, t(".address") %>
+        <%= f.fields_for :address do |address| %>
+          <div>
+            <%= address.label :name, t(".street") %>
+            <%= address.text_field :name, class: "form-control" %>
+          </div>
+          <div>
+            <%= address.label :city, t(".city") %>
+            <%= address.text_field :city, class: "form-control" %>
+          </div>
+        <% end %>
+        <%= f.submit yield(:button_text), class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+

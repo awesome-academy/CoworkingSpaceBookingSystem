@@ -47,6 +47,7 @@ class PasswordResetsController < ApplicationController
 
   def valid_user
     return if @user&.activated? && @user&.authenticated?(:reset, params[:id])
+
     flash[:alert] = t ".cant_update"
     redirect_to root_url
   end

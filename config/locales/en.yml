@@ -15,7 +15,7 @@ en:
       title_logo: "CoWorking Space"
       signup: "Sign up"
       login: "Login"
-      logout: "logout"
+      logout: "Logout"
       title_profile: "Profile"
       title_setting: "Setting"
       title_account: "Account"
@@ -82,3 +82,25 @@ en:
     new:
       title: "Forgot password"
       btn_submit: "Submit"
+  venues:
+    update_venue_success: "Update Venue Success"
+    venue_notexist: "Venue not exist"
+    form:
+      name: "Name"
+      address: "ADDRESS:"
+      amenities: "AMENITIES:"
+      street: "Street:"
+      city: "City:"
+      amenity: "Amenity:"
+    new:
+      title: "Create Venue"
+      btn_create_venue: "Create"
+    edit:
+      title: "Edit Venue"
+      btn_edit_venue: "Edit"
+    index:
+      title: "Venue"
+    amenity_fields:
+      add_amenity: "Add amenity"
+    index:
+      all_spaces: "All Spaces of User"
